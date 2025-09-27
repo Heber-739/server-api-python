@@ -63,3 +63,20 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer <TOKE
   -d '{"titulo":"Comprar leche","descripcion":"Ir al supermercado"}' \
   http://127.0.0.1:5000/tareas
 ```
+
+#Respuestas Conceptuales
+## Por qué hashear contraseñas?
+
+Guardar contraseñas tal cual las escribe el usuario es extremadamente inseguro, si la BD es robada o accedida, las contraseñas no pueden leerse directamente, porque el hash es un resultado irreversible (unidireccional). Los algoritmos de hashing (bcrypt por ejemplo) están diseñados para que no se pueda obtener la contraseña original a partir del hash.
+Por lo que es mas seguro la comparacion de los hash de las contraseñas que el texto plano ingresado por el usuario. Esto es, almacenar el hash de la contraseña en DB, y cuando el usuario intente loguearse, hacer el hash del input y compararlo con el almacenado.
+
+
+## Ventajas de usar SQLite
+
+No requiere instalar ni administrar un servidor (como MySQL o PostgreSQL). Esto la vuelve más liviana y mejora la usabilidad.
+
+Python incluye el módulo sqlite3 en la librería estándar, sin dependencias extra.
+
+Es perfecta para prototipos, pruebas locales y aplicaciones de bajo tráfico. Ideal para proyectos pequeños
+
+LA implementacion de esta BD con SQLite fue tan rapida como instalar la libreria y ejecutar los comandos. Sin programas extras ni procesos extras.
